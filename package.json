@@ -1,7 +1,7 @@
 {
   "name": "async-resolver",
   "version": "0.0.1",
-  "description": "Asynchronously resolve subscribed decisions",
+  "description": "Asynchronously resolve subscribed decisions in pub-sub architecture",
   "main": "index.js",
   "directories": {
     "test": "test"
@@ -14,7 +14,8 @@
     "promise",
     "decision",
     "resolve",
-    "function"
+    "function",
+    "pubsub"
   ],
   "author": "Apoorv Saxena",
   "license": "MIT",
