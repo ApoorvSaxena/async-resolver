@@ -1,6 +1,6 @@
 # async-resolver [![Build Status](https://travis-ci.org/ApoorvSaxena/async-resolver.svg?branch=master)](https://travis-ci.org/ApoorvSaxena/async-resolver) [![Coverage Status](https://coveralls.io/repos/github/ApoorvSaxena/async-resolver/badge.svg?branch=master)](https://coveralls.io/github/ApoorvSaxena/async-resolver?branch=master)
 
-AsyncResolver implements a PubSub architecture where subscribers of events are decision makers (return promise when they receive an event) and after publishing an event, a publisher can get the decision of the subscribers.
+AsyncResolver.js implements a PubSub architecture where subscribers of events are decision makers (return promise when they receive an event) and after publishing an event, a publisher can get the decision of the subscribers. Supports both Node and browser.
 
 ### Where to use?
 
