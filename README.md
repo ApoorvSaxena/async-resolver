@@ -1,4 +1,4 @@
-# async-resolver [![Build Status](https://travis-ci.org/ApoorvSaxena/async-resolver.svg?branch=master)](https://travis-ci.org/ApoorvSaxena/async-resolver) [![Coverage Status](https://coveralls.io/repos/github/ApoorvSaxena/async-resolver/badge.svg?branch=master)](https://coveralls.io/github/ApoorvSaxena/async-resolver?branch=master)
+# async-resolver [![Build Status](https://travis-ci.org/ApoorvSaxena/async-resolver.svg?branch=master)](https://travis-ci.org/ApoorvSaxena/async-resolver) [![Coverage Status](https://coveralls.io/repos/github/ApoorvSaxena/async-resolver/badge.svg?branch=master)](https://coveralls.io/github/ApoorvSaxena/async-resolver?branch=master) [![dependencies Status](https://david-dm.org/ApoorvSaxena/async-resolver/status.svg)](https://david-dm.org/ApoorvSaxena/async-resolver)
 
 AsyncResolver.js implements a PubSub architecture where subscribers of events are decision makers (return promise when they receive an event) and after publishing an event, a publisher can get the decision of the subscribers. Supports both Node and browser.
 
@@ -26,12 +26,12 @@ yarn add async-resolver
 const AsyncResolver = require('async-resolver');
 let resolver = new AsyncResolver();
 
-resolver.subscribe('locationChange', function() {
+resolver.subscribe('locationChange', () => {
 	// custom logic
     return Promise.resolve();
 });
 
-resolver.subscribe('locationChange', function() {
+resolver.subscribe('locationChange', () => {
 	// custom logic
     return Promise.reject();
 });
@@ -40,12 +40,8 @@ resolver
 	.publish('locationChange', {
 		promiseMethod: 'any'
 	})
-	.then(function(data) {
-		console.log('locationChange possible');
-	})
-	.catch(function(data) {
-		console.log('locationChange not possible');
-	});
+	.then(() => console.log('locationChange possible'))
+	.catch(() => console.log('locationChange not possible'))
 ```
 
 ## API

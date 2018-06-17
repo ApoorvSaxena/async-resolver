@@ -2,7 +2,7 @@ const AsyncResolver = require('../index.js');
 const assert = require('assert')
 
 describe('AsyncResolver', () => {
-    describe('AsyncResolver', () => {
+    describe('itself', () => {
         it('should be a function', () => {
             assert.equal('function', typeof AsyncResolver)
         })
@@ -10,12 +10,12 @@ describe('AsyncResolver', () => {
 
     describe('instance of AsyncResolver', () => {
         it('should be an object', () => {
-            var resolver = new AsyncResolver();
+            const resolver = new AsyncResolver();
             assert.equal('object', typeof resolver)
         })
 
         it('should define publish and subscribe functions', () => {
-            var resolver = new AsyncResolver();
+            const resolver = new AsyncResolver();
             assert.equal('function', typeof resolver.publish)
             assert.equal('function', typeof resolver.subscribe)
         })
@@ -23,14 +23,14 @@ describe('AsyncResolver', () => {
 
     describe('publish function', () => {
         it('should resolve when no subscriber is attached', (done) => {
-            var resolver = new AsyncResolver();
+            const resolver = new AsyncResolver();
             resolver
                 .publish('locationChange')
-                .then(function() {
+                .then(() => {
                     assert.equal(true, true);
                     done();
                 })
-                .catch(function() {
+                .catch(() => {
                     assert.equal(false, true);
                     done();
                 });
@@ -38,60 +38,52 @@ describe('AsyncResolver', () => {
 
         describe('with ANY as promiseMethod', () => {
             it('should resolve when no subscribers attached', (done) => {
-                var resolver = new AsyncResolver();
+                const resolver = new AsyncResolver();
                 resolver
                     .publish('locationChange', {
                         promiseMethod: 'any'
                     })
-                    .then(function() {
+                    .then(() => {
                         assert.equal(true, true);
                         done();
                     })
-                    .catch(function() {
+                    .catch(() => {
                         assert.equal(false, true);
                         done();
                     });
             })
 
             it('should resolve and when one of the subscribers resolves', (done) => {
-                var resolver = new AsyncResolver();
-                resolver.subscribe('locationChange', function() {
-                    return Promise.resolve();
-                });
-                resolver.subscribe('locationChange', function() {
-                    return Promise.reject();
-                });
+                const resolver = new AsyncResolver();
+                resolver.subscribe('locationChange', () => Promise.resolve());
+                resolver.subscribe('locationChange', () => Promise.reject());
                 resolver
                     .publish('locationChange', {
                         promiseMethod: 'any'
                     })
-                    .then(function() {
+                    .then(() => {
                         assert.equal(true, true);
                         done();
                     })
-                    .catch(function() {
+                    .catch(() => {
                         assert.equal(false, true);
                         done();
                     });
             })
 
             it('should reject and when none of the subscribers resolves', (done) => {
-                var resolver = new AsyncResolver();
-                resolver.subscribe('locationChange', function() {
-                    return Promise.reject();
-                });
-                resolver.subscribe('locationChange', function() {
-                    return Promise.reject();
-                });
+                const resolver = new AsyncResolver();
+                resolver.subscribe('locationChange', () => Promise.reject());
+                resolver.subscribe('locationChange', () => Promise.reject());
                 resolver
                     .publish('locationChange', {
                         promiseMethod: 'any'
                     })
-                    .then(function() {
+                    .then(() => {
                         assert.equal(false, true);
                         done();
                     })
-                    .catch(function() {
+                    .catch(() => {
                         assert.equal(true, true);
                         done();
                     });
@@ -100,60 +92,52 @@ describe('AsyncResolver', () => {
 
         describe('with ALL as promiseMethod', () => {
             it('should resolve and when no subscribers attached', (done) => {
-                var resolver = new AsyncResolver();
+                const resolver = new AsyncResolver();
                 resolver
                     .publish('locationChange', {
                         promiseMethod: 'all'
                     })
-                    .then(function() {
+                    .then(() => {
                         assert.equal(true, true);
                         done();
                     })
-                    .catch(function() {
+                    .catch(() => {
                         assert.equal(false, true);
                         done();
                     });
             })
 
             it('should resolve and when all of the subscribers resolves', (done) => {
-                var resolver = new AsyncResolver();
-                resolver.subscribe('locationChange', function() {
-                    return Promise.resolve();
-                });
-                resolver.subscribe('locationChange', function() {
-                    return Promise.resolve();
-                });
+                const resolver = new AsyncResolver();
+                resolver.subscribe('locationChange', () => Promise.resolve());
+                resolver.subscribe('locationChange', () => Promise.resolve());
                 resolver
                     .publish('locationChange', {
                         promiseMethod: 'all'
                     })
-                    .then(function() {
+                    .then(() => {
                         assert.equal(true, true);
                         done();
                     })
-                    .catch(function() {
+                    .catch(() => {
                         assert.equal(false, true);
                         done();
                     });
             })
 
             it('should reject and when one of the subscribers rejects', (done) => {
-                var resolver = new AsyncResolver();
-                resolver.subscribe('locationChange', function() {
-                    return Promise.resolve();
-                });
-                resolver.subscribe('locationChange', function() {
-                    return Promise.reject();
-                });
+                const resolver = new AsyncResolver();
+                resolver.subscribe('locationChange', () => Promise.resolve());
+                resolver.subscribe('locationChange', () => Promise.reject());
                 resolver
                     .publish('locationChange', {
                         promiseMethod: 'all'
                     })
-                    .then(function() {
+                    .then(() => {
                         assert.equal(false, true);
                         done();
                     })
-                    .catch(function() {
+                    .catch(() => {
                         assert.equal(true, true);
                         done();
                     });
