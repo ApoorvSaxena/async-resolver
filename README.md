@@ -4,11 +4,11 @@
 	<img src="async-resolver-logo.png" align="center">
 </h1>
 
-AsyncResolver.js implements a PubSub architecture where subscribers of events are decision makers (return promise when they receive an event) and after publishing an event, a publisher can get the decision of the subscribers. Supports both Node and browser.
+AsyncResolver.js implements a PubSub architecture where subscribers of events are decision makers (return promise when they receive an event) and after publishing an event, publisher gets the decision of the subscribers. Supports both Node and browser.
 
 ### Where to use?
 
-There are situations where we want to maintain distinct subscribers of an event, though want to act on the basis of how subscribers react. AsyncResolver is the solution for this need. It's an amalgamation of pub sub architecture and promises to allow decision making capability in asynchronous environment.
+There are situations where we want to maintain distinct subscribers of an event, though want to act on the basis of how subscribers react. AsyncResolver.js is the solution for this need, it's an amalgamation of pub sub architecture and promises to allow decision making capability in asynchronous environment.
 > For example: Let's consider a case where there are several components on a webpage, whose state can be changed by the user and we allow every component to subscriber as listener to listen to a page transition so that we can check if a user is trying to move without saving data.
 
 > Now, when an individual clicks on a link, we publish an event mentioning of the transition of the user from the page, though we want to ask every listener (or component) if user has made any changes to their state and is moving without saving them. In case there are any unsaved changes in any of the component, then we cancel the transition and instead dispay an information dialog to the user asking him to save information before proceeding further.
@@ -44,8 +44,8 @@ resolver
 	.publish('locationChange', {
 		promiseMethod: 'any'
 	})
-	.then(() => console.log('locationChange possible'))
-	.catch(() => console.log('locationChange not possible'))
+	.then(() => console.log('location change allowed'))
+	.catch(() => console.log('location change denied'))
 ```
 
 ## API
