@@ -8,8 +8,8 @@ AsyncResolver.js implements a PubSub architecture where subscribers of events ar
 
 ### Where to use?
 
-There are situations where we want to maintain distinct subscribers of an event, though want to act on the basis of how subscribers react. AsyncResolver.js is the solution for this need, it's an amalgamation of pub sub architecture and promises to allow decision making capability in asynchronous environment.
-> For example: Let's consider a case where there are several components on a webpage, whose state can be changed by the user and we allow every component to subscriber as listener to listen to a page transition so that we can check if a user is trying to move without saving data.
+There are situations where we want to maintain distinct subscribers of an event, though want to act on the basis of how subscribers react. AsyncResolver.js is the solution for this need, it's an amalgamation of pub sub architecture and promises to provide decision making capability in asynchronous environment.
+> For example: Let's consider a case where there are several components on a webpage, whose state can be changed by the user and we make every component to subscribe as listener to listen to a page transition so that we can check if a user is trying to move without saving data.
 
 > Now, when an individual clicks on a link, we publish an event mentioning of the transition of the user from the page, though we want to ask every listener (or component) if user has made any changes to their state and is moving without saving them. In case there are any unsaved changes in any of the component, then we cancel the transition and instead dispay an information dialog to the user asking him to save information before proceeding further.
 
