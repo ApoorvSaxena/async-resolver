@@ -1,6 +1,6 @@
 {
   "name": "async-resolver",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Asynchronously resolve subscribed decisions in pub-sub architecture",
   "main": "index.js",
   "directories": {
@@ -18,7 +18,27 @@
     "function",
     "pubsub"
   ],
-  "author": "Apoorv Saxena",
+  "author": {
+    "name": "Apoorv Saxena",
+    "email": "root@apoorv.pro",
+    "url": "https://apoorv.pro"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/ApoorvSaxena/async-resolver.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ApoorvSaxena/async-resolver/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/ApoorvSaxena/async-resolver/blob/master/LICENSE"
+    }
+  ],
+  "files": [
+    "index.js"
+  ],
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.5.1"
